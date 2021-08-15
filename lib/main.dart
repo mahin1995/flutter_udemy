@@ -34,8 +34,12 @@ class _MyAppState extends State<MyApp> {
       {"quesionsText":'What\'s your favorite color?',
       'answer':['Black','Red','yellow','Green'],
       },
-          {"quesionsText":'What\'s your favorite animal?',
+      {"quesionsText":'What\'s your favorite animal?',
       'answer':['Monkey','Cat','Bird','Fish'],
+      }
+      ,
+      {"quesionsText":'What\'s your favorite flower?',
+      'answer':['golap','bali','rose','lily'],
       }
       
       ,
@@ -53,7 +57,7 @@ class _MyAppState extends State<MyApp> {
             ),
             ...(questions[_questionIndex]['answer'] as List<String>).map((answer) {
               return Answer(_answerQuestion,answer);
-            })
+            }).toList()
     
           
           ],

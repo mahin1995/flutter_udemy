@@ -6,7 +6,7 @@ class Quizlist extends StatelessWidget {
   // const Quizlist({ Key? key }) : super(key: key);
   final List<Map<String, Object>> questions;
   final int questionIndex;
-  final VoidCallback answerQuestion;
+  final Function answerQuestion;
 
   const Quizlist(
       {required this.answerQuestion,
@@ -22,8 +22,10 @@ class Quizlist extends StatelessWidget {
           // questions[_questionIndex]['quesionsText']?.toString() ??'',
           questions[questionIndex]['quesionsText'] as String,
         ),
-        ...(questions[questionIndex]['answer'] as List<String>).map((answer) {
-          return Answer(answerQuestion, answer);
+        ...(questions[questionIndex]['answer'] as List<Map<String, Object>>)
+            .map((answer) {
+          var score = answer['score'];
+          return Answer(() => answerQuestion(score), answer['text'] as String);
         }).toList()
       ],
     );
